@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="FriendRequest" table="FRIEND_REQUEST">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>		
+		<version name="version"></version>
+				
+		<property name="message" column="message" type="string" />		
+		<property name="accepted" column="accepted" type="boolean" />
+		<property name="responded" column="responded" type="boolean" />
+		
+		<property name="lastUpdated" column="last_updated" type="timestamp" />					
+		<property name="dateCreated" column="date_created" type="timestamp" />	
+			
+		<many-to-one name="to" class="User" column="REQUESTEE_ID" cascade="none"/>
+		<many-to-one name="createdBy" class="User" column="REQUESTOR_ID" cascade="none"/>		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="NewsArticle" table="NEWS_ARTICLE">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>		
+		
+		<version name="version"></version>
+				
+		<property name="lastUpdated" column="last_updated" type="timestamp" />					
+		<property name="dateCreated" column="date_created" type="timestamp" />
+		<property name="title" column="title" type="string" />
+		<property name="content" column="content" type="string" />
+		<property name="website" column="website" type="string" />
+		<property name="uri" column="uri" type="string" />
+		
+		<property name="metaKeywords" column="META_KEYWORDS" type="string"  />
+		<property name="metaDescription" column="META_DESCRIPTION" type="string"  />
+		
+		<many-to-one name="createdBy" class="User" column="AUTHOR_ID" cascade="none"/>
+		<many-to-one name="lastUpdatedBy" class="User" column="LAST_UPDATED_ID" cascade="none"/>	
+		<many-to-one name="image" class="Image" column="IMAGE_ID" cascade="save-update"/>
+	
+		<set name="categories" lazy="false" table="NEWS_ATICLE_CATEGORY" cascade="save-update" sort="natural">
+			<cache usage="read-write"/> 
+			<key column="NEWS_ARTICLE_ID"/>
+			<many-to-many class="Category" column="CATEGORY_ID"/>
+		</set>
+		
+		<set name="comments" cascade="all" lazy="true" sort="natural">
+			<cache usage="read-write"/>
+			<key column="news_article_id" />
+			<one-to-many class="Comment" />			
+		</set>
+	</class>
+</hibernate-mapping>

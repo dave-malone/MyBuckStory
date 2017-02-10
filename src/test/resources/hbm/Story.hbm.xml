@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="Story" table="STORY">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>		
+		
+		<version name="version"></version>
+				
+		<property name="lastUpdated" column="last_updated" type="timestamp" />					
+		<property name="dateCreated" column="date_created" type="timestamp" />
+		<property name="title" column="title" type="string" />
+		<property name="text" column="text" type="string"  />
+		<property name="uri" column="uri" type="string" />
+		<property name="averageRating" column="average_rating" type="java.lang.Double" />
+		<property name="voteCount" column="vote_count" type="java.lang.Integer" />
+		
+		<property name="metaKeywords" column="META_KEYWORDS" type="string"  />
+		<property name="metaDescription" column="META_DESCRIPTION" type="string"  />
+		
+		<many-to-one name="createdBy" class="User" column="AUTHOR_ID" cascade="none" />
+		<many-to-one name="lastUpdatedBy" class="User" column="LAST_UPDATED_ID" cascade="none"/>		
+		<many-to-one name="image" class="Image" column="IMAGE_ID" cascade="all" />
+		
+		<set name="categories" lazy="false" table="STORY_CATEGORY" cascade="save-update" sort="natural">
+			<cache usage="read-write"/> 
+			<key column="STORY_ID"/>
+			<many-to-many class="Category" column="CATEGORY_ID"/>
+		</set>
+		<set name="comments" cascade="all" lazy="true" sort="natural">
+			<cache usage="read-write"/>
+			<key column="story_id" />
+			<one-to-many class="Comment" />			
+		</set>
+		<set name="memberFeedItems" cascade="all" lazy="true">
+			<key column="STORY_ID" />
+			<one-to-many class="MemberFeedItem" />			
+		</set>	
+		<set name="prizes" cascade="all" lazy="true">
+			<key column="WINNING_STORY_ID" />
+			<one-to-many class="ContestPrize" />			
+		</set>	
+		<set name="storyRatings" lazy="true" table="STORY_RATING" cascade="all">
+			<cache usage="read-write"/> 
+			<key column="id"/>
+			<many-to-many class="StoryRating" property-ref="PK.storyId"/>
+		</set>		
+	</class>
+</hibernate-mapping>

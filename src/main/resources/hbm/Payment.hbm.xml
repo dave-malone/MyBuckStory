@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="Payment" table="PAYMENT">
+		<cache usage="read-write"/>
+	
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>	
+		
+		<property name="buyerId" type="string" column="buyer_id" />
+		<property name="currency" type="string" column="currency" />
+		<property name="paypalTransactionId" type="string" column="paypal_tx_id" />
+		<property name="status" type="string" column="status" />
+		<property name="tax" type="big_decimal" column="tax" />
+		<property name="transactionId" type="string" column="transactionId" />
+		
+		<property name="lastUpdated" column="last_updated" type="timestamp" />			
+		<property name="dateCreated" column="date_created" type="timestamp" />
+		
+		<many-to-one name="order" class="Order" column="ORDER_ID" cascade="none" />		
+	</class>
+</hibernate-mapping>

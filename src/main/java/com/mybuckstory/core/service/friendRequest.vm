@@ -1,0 +1,15 @@
+<html>
+<body>
+	<p>		
+		${senderFirstName} added you as a friend on MyBuckStory.  We need to confirm that you know ${senderFirstName} in
+		order for you to be friends on MyBuckStory.
+	</p>
+	<p>
+		<a href="http://mybuckstory.com/profile/inbox/">View your Friend Requests</a>			
+	</p>	
+	<p>
+		Thanks,<br />
+		The MyBuckStory Team
+	</p>
+</body>
+</html>

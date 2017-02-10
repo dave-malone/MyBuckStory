@@ -1,0 +1,14 @@
+<html>
+<body>
+	<p>		
+		${senderFirstName} has sent you a message on MyBuckStory.com.
+		<br /><br />		
+		<a href="http://mybuckstory.com/profile/inbox/">View your Message</a>	
+	</p>	
+	<p>
+		<br />
+		Thanks,<br />
+		The MyBuckStory Team
+	</p>
+</body>
+</html>

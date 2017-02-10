@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="AdClick" table="AD_CLICK">
+		<cache usage="read-write"/>
+	
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>		
+				
+		<property name="userIpAddress" column="IP_ADDRESS" type="string" />		
+		<property name="userAgent" column="USER_AGENT" type="string" />
+		<property name="referrer" column="REFERRER" type="string" />			
+		<property name="dateCreated" column="date_created" type="timestamp" />
+			
+		<many-to-one name="ad" class="Ad" column="AD_ID" cascade="all"/>
+	</class>
+</hibernate-mapping>

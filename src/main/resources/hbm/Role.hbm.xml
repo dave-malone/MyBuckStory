@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="Role" table="ROLE">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>
+		
+		<property name="name" type="string" column="name" not-null="true" unique="true"/>
+		<property name="title" type="string" column="title" />
+				
+		<set name="users" lazy="true" table="USER_ROLE" cascade="none">
+			<key column="ROLE_ID"></key>
+			<many-to-many class="User" column="USER_ID"/>
+		</set>
+	</class>
+</hibernate-mapping>

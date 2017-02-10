@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd		
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<context:component-scan base-package="com.mybuckstory.web" />
+
+	<!-- Configures the @Controller programming model -->
+	<mvc:annotation-driven />
+
+	<!-- Allows the default Servlet to continue to serve static resources -->
+	<mvc:default-servlet-handler />
+	
+	<mvc:view-controller path="/" view-name="index"/>
+	
+	<mvc:resources location="/images/" mapping="/images/**"/>
+	<mvc:resources location="/scripts/" mapping="/scripts/**"/>
+	<mvc:resources location="/style/" mapping="/style/**"/>
+	
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/defs/templates.xml</value>				
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />		
+	</bean>	
+	
+	<!-- 
+	org.springframework.web.multipart.commons.CommonsMultipartResolver
+	 -->
+	<bean id="multipartResolver" class="com.mybuckstory.web.spring.ProgressListenerCommonsMultipartResolver">
+		<property name="maxUploadSize">
+			<!-- in bytes; this is 200MB (1024*1024*200); make sure the server is configured
+			to handle this much at once!!! -->
+			<value>209715200</value>
+		</property>
+		<!-- property name="uploadTempDir">
+			<value>/tmp</value>
+		</property -->
+	</bean>	  
+</beans>

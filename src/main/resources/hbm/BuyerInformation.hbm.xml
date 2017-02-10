@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="BuyerInformation" table="BUYER_INFO">
+		<cache usage="read-write"/>
+	
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>	
+		
+		<property name="addressConfirmed" type="boolean" column="address_confirmed" />
+		<property name="city" type="string" column="city" />
+		<property name="companyName" type="string" column="company_name" />
+		<property name="country" type="string" column="country" />
+		<property name="countryCode" type="string" column="countryCode" />
+		<property name="email" type="string" column="email" />
+		<property name="firstName" type="string" column="firstName" />
+		<property name="lastName" type="string" column="lastName" />
+		<property name="phoneNumber" type="string" column="phoneNumber" />
+		<property name="receiverName" type="string" column="receiverName" />
+		<property name="state" type="string" column="state" />
+		<property name="street" type="string" column="street" />
+		<property name="uniqueCustomerId" type="string" column="unique_customer_id" />
+		<property name="zip" type="string" column="zip" />
+		
+		
+		<property name="lastUpdated" column="last_updated" type="timestamp" />			
+		<property name="dateCreated" column="date_created" type="timestamp" />
+		
+		<many-to-one name="payment" class="Payment" column="PAYMENT_ID" cascade="none" />
+	</class>
+</hibernate-mapping>

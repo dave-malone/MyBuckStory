@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="ShoppingCart" table="SHOPPING_CART">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>		
+		
+		<version name="version"></version>		
+		
+		<property name="serializedCart" type="text" column="serialized_cart" />
+		<property name="lastUpdated" column="last_updated" type="timestamp" />					
+		<property name="dateCreated" column="date_created" type="timestamp" />		
+		
+		<many-to-one name="createdBy" class="User" column="USER_ID" cascade="none"/>					
+	</class>
+</hibernate-mapping>

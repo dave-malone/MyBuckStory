@@ -1,0 +1,93 @@
+Photo & Album enhancements
+- enable users to comment on Albums
+- add "user has commented on Album" notification to member feed
+- add "user has updated their profile" notification to member feed
+- add "user has shared a photo" notification to member feed
+- send email notification about photo comments
+- send email notification about album comments
+- modify the "Share a Photo" form to allow users to either share a single image or to create a new album
+- implement "add to album" & "change album" features for images
+- when user deletes a picture that is their profile picture, it doesn't remove the IMAGE_ID from their Profile record, causing issues
+- change profile pic page should have validator to check for valid image types and to communicate invalid files back to user
+- SEO enhancement - add canonical/base url for photos pages
+- SEO enhancement - add canonical/base url for album pages
+- fix layout issue where "View Full Size" link gets bumped down on image page
+- ObjectNotFoundException - Album #2 (find what's linking to this, fix the data in the database)
+- change image resizedCopies hibernate mapping file to lazy = true, test entire site to see where eager fetching needs to be manually coded in cases where it's actually needed
+- change all criteria queries that specifically set fetch mode for resizedCopies to LAZY (also look for result set transformers that can be eliminiated, e.g. setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY))
+
+Profile enhancements
+- profile > wall "like" and "comment" links wrap up into longer messages/comments
+- include full message text in email notifications about messages with a link directly to the message page
+- allow users to submit either a status update, share a story, photo/album, or video from the same area where they can currently update their status
+- enhance settings so users can select which email notification types they want to receive
+- add "Connect with Facebook" option under Profile > Settings
+- if users profile is connected with Facebook, add setting to allow users to control whether or not they want MBS to auto publish content shared on MBS to FB (stories, albums, photos, videos)
+- if user allows auto publish of content shared on MBS to FB, then publish to Facebook
+
+Story enhancements
+- add multi-image support to stories
+- include full comment text in email notifications about comments
+- SEO enhancement - add canonical/base url for stories pages
+
+Video enhancements
+- send email notification about video comments
+
+Home Page enhancements
+- consolidate recent stories into "slider" type view, with auto-sliding capabilities
+- add "recently shared photos"
+- add "recently shared albums"
+- add "trending stories," also utilizing slider implemented for recent stories.  Trending stories should be based on page views, comments, votes, star ratings, and shares
+- show currently running contests on the home page
+
+Badge enhancements 
+- fix badge-related issues reported in jtrac
+- per Adam's suggestion, add a Badge "How To" listing page (think of where the best place to link to this really belongs)
+
+General enhancements
+DONE: - remove news feature altogether, as it does not provide any real value
+- send users a "Weekly Digest" email that contains things their friends are doing (using statuses), trending stories, and MBS marketing updates such as new affiliates/partners, contests, or special product offers (users will need to be able to opt out of this)
+- implement "invite friends" feature where users that sign up as part of invites can be tracked, create an "invite friends" marketing initiative
+- SEO enhancement - add canonical/base url for stories pages, photos pages
+- add "Connect with Facebook" option for registration
+- remove all DWR integrations, replace with jquery ajax and mvc controller endpoints instead (should help avoid duplicate comments and posts issue)
+- add "Contact Us" page with options to "Report Issue," "Provide Feedback," or other options, add as top level nav tab
+- add "About Us" page - use content from the current about us page, add as top level nav tab
+- member feed - make each status feed item link to it's own page so users can click directly on that link to view the status that's 
+  showing up in their member feed instead of having to search for it
+
+
+
+
+
+
+Completed Bug fixes & Enhancements
+
+DONE: - NonUniqueObjectException when trying to make an existing image my profile pic
+DONE: - change profile pic page should have photo name, description, and tags field
+DONE: - allow any users to begin uploading videos (add new CTA in right gutter)
+DONE: - change "Share Your Pics" to "Share Photos"
+DONE: - fix inbox layout issues
+DONE: - fix issue where once a user replies to inbox message, message disappears
+DONE: - enhance Message class - add "deletedFromSentMessages" field, add a "Delete" option under sent messages that 
+  toggles this field, and then change getSentMessages MessageService method criteria to deletedFromSentMessages = false
+DONE: - make each section of the profile > messages tab paginated 
+DONE: - LIE exception on public profile albums page (can't seem to reproduce, but this issue is showing up in the logs)
+DONE: - message/inbox profile images need to have a max height set to avoid layout issues
+DONE: - add "story pics" to profile > pictures section
+DONE: - add "user has updated their profile picture" to feed
+DONE: - add "user has created an album" to feed
+DONE: - remove news from home page, since noone is using it
+DONE: - "Make Profile Pic" not persisting (remove DWR client, use controller method and jquery ajax instead)
+DONE: - edit profile info is broken due to the fix for "make profile pic" feature on images being fixed...
+DONE: - profile "recent badges" not showing up
+DONE: - signin view not found (something must be linking to this page somehow) /** searched the code base, verified that nothing is trying to link to this view**/
+DONE: - private.profile.photos view not found (must be something linking to this page somehow) /** searched the code base, verified that nothing is trying to link to this view**/
+DONE: - add "user has shared video" to member feed
+DONE: - add "user has commented on video" to member feed
+DONE: - user registration with failed validation (missing or invalid info on signup) is going to "Mbs has an error with it's code" screen
+
+
+  
+
+  

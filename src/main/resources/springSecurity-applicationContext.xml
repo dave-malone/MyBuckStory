@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sec="http://www.springframework.org/schema/security"	
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="saltSource" class="org.springframework.security.authentication.dao.SystemWideSaltSource">
+		<property name="systemWideSalt" value="th!$is@pr3ttyh3@vy$@lt" />
+	</bean>
+	<bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+		<constructor-arg value="256"/>
+	</bean>
+	<bean id="passwordEncryptionService" class="com.mybuckstory.core.security.PasswordEncryptionService">
+		<property name="passwordEncoder">
+			<ref local="passwordEncoder"/>
+		</property>
+		<property name="saltSource">
+			<ref local="saltSource"/>
+		</property>
+	</bean>
+	<bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService">
+			<ref bean="userService" />
+		</property>		
+		<property name="saltSource">
+			<ref bean="saltSource" />			
+		</property>
+		<property name="passwordEncoder">
+			<ref bean="passwordEncoder" />			
+		</property>		
+	</bean>	
+	
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass" value="org.springframework.security.core.context.SecurityContextHolder"/>
+		<property name="targetMethod" value="setStrategyName"/>
+		<property name="arguments"><list><value>MODE_INHERITABLETHREADLOCAL</value></list></property>
+	</bean>
+
+	<sec:authentication-manager>
+		<sec:authentication-provider ref="daoAuthenticationProvider" />
+	</sec:authentication-manager>
+
+	<sec:http auto-config="true" use-expressions="true">
+		<sec:intercept-url pattern="/static/**" filters="none" />
+		<sec:intercept-url pattern="/images/**" filters="none" />
+		<sec:intercept-url pattern="/scripts/**" filters="none" />
+		<sec:intercept-url pattern="/style/**" filters="none" />
+
+		<sec:intercept-url pattern="/image.html*" access="permitAll" />
+		<sec:intercept-url pattern="/register/**" access="permitAll" />
+		<sec:intercept-url pattern="/refer/**" access="permitAll" />
+		<sec:intercept-url pattern="/streamimage.do*" access="permitAll" />
+		<sec:intercept-url pattern="/upload.images.do**" access="isAuthenticated()"/>
+				
+		<sec:intercept-url pattern="/*/manage/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/*/comment/**" access="isAuthenticated()" />
+				
+		<sec:intercept-url pattern="/ad/click/**" access="permitAll" />
+		<sec:intercept-url pattern="/ad/**" access="hasRole('ROLE_ADMIN')" />		
+		<sec:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+		
+		<sec:intercept-url pattern="/affiliate/create/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/affiliate/save/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/affiliate/edit/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/affiliate/update/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/affiliate/delete/**" access="hasRole('ROLE_ADMIN')" />
+		
+		<sec:intercept-url pattern="/badge/**" access="hasRole('ROLE_ADMIN')" />		
+		<sec:intercept-url pattern="/category/**" access="hasRole('ROLE_ADMIN')" />
+		
+		<sec:intercept-url pattern="/contest/create/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/contest/save/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/contest/edit/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/contest/update/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/contest/delete/**" access="hasRole('ROLE_ADMIN')" />
+		
+		<sec:intercept-url pattern="/contestPrize/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/dwr/**" access="isAuthenticated()" />
+		
+		<sec:intercept-url pattern="/event/create/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/event/save/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/event/edit/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/event/update/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/event/delete/**" access="hasRole('ROLE_ADMIN')" />
+		
+		<sec:intercept-url pattern="/image/create/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/image/save/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/image/edit/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/image/update/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/image/delete/**" access="isAuthenticated()" />
+		
+		<sec:intercept-url pattern="/footerLink/**" access="hasRole('ROLE_ADMIN')" />
+		
+		<sec:intercept-url pattern="/newsArticle/create/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/newsArticle/save/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/newsArticle/edit/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/newsArticle/update/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/newsArticle/delete/**" access="hasRole('ROLE_ADMIN')" />
+		
+		<sec:intercept-url pattern="/prize/**" access="hasRole('ROLE_ADMIN')" />
+		
+		<sec:intercept-url pattern="/profile/*/mine/**" access="isAuthenticated()" />		
+		<sec:intercept-url pattern="/profile/edit/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/profile/feed/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/profile/inbox/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="profile/makeProfilePic/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/profile/message/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/profile/update/**" access="isAuthenticated()" />
+		
+		<sec:intercept-url pattern="/story/create/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/story/save/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/story/edit/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/story/update/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/story/delete/**" access="hasRole('ROLE_ADMIN')" />
+				
+		<sec:intercept-url pattern="/user/list/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/user/create/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/user/save/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/user/edit/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/user/update/**" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/user/delete/**" access="hasRole('ROLE_ADMIN')" />
+		
+		<sec:intercept-url pattern="/videos/**" access="permitAll" />
+		<sec:intercept-url pattern="/video/show/**" access="permitAll" />
+		<sec:intercept-url pattern="/video/handleEncodingNotification/**" access="permitAll" />
+		
+		<sec:intercept-url pattern="/video/create/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/video/comment/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/video/save/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/video/edit/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/video/update/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/video/delete/**" access="hasRole('ROLE_ADMIN')" />
+		
+		<sec:intercept-url pattern="/**" access="permitAll" />
+		
+		<sec:form-login login-page="/register/signin?login_required=1" 
+				default-target-url="/profile/show/mine/" 
+				authentication-failure-url="/register/signin?login_error=1" />
+		<sec:remember-me key="mbsKey"/>
+	</sec:http>
+</beans>

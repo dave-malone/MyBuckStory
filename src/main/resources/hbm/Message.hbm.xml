@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="Message" table="MESSAGE">
+		<cache usage="read-write"/>
+		<id name="id" column="ID" type="long">
+			<generator class="native" />
+		</id>		
+		
+		<version name="version"></version>		
+		
+		<property name="subject" type="text" column="SUBJECT" />
+		<property name="content" type="text" column="CONTENT" />
+		<property name="mostRecent" type="boolean" column="MOST_RECENT" />
+		<property name="unread" type="boolean" column="UNREAD" />
+		<property name="deleted" type="boolean" column="DELETED" />
+		<property name="deletedFromSentMessages" type="boolean" column="DELETED_FROM_SENT_MESSAGES_VIEW" />
+		
+		<property name="dateCreated" column="DATE_CREATED" type="timestamp" />		
+		
+		<many-to-one name="to" class="User" column="TO_ID" cascade="none"/>
+		<many-to-one name="inResponseTo" class="Message" column="RESPONSE_TO_ID" cascade="none"/>
+		<many-to-one name="createdBy" class="User" column="FROM_ID" cascade="none"/>				
+	</class>
+</hibernate-mapping>

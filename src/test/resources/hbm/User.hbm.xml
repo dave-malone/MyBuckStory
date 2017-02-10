@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="User" table="USER">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>
+		<property name="passwordResetToken" type="string" column="pw_reset_tkn" />	
+		<property name="password" type="string" column="password" not-null="true"/>
+		<property name="username" type="string" column="user_name" not-null="true" unique="true"/>
+		<property name="signupDate" type="date" column="signup_date"/>
+		<property name="lastLoginDate" column="last_login_date" type="timestamp" />
+		<property name="enabled" type="boolean" column="enabled"/>
+		<property name="accountNonExpired" type="boolean" column="account_non_expired"/>
+		<property name="accountNonLocked" type="boolean" column="account_non_locked"/>
+		<property name="credentialsNonExpired" type="boolean" column="credentials_non_expired"/>		
+		<property name="acceptedTOS" type="boolean" column="accepted_tos"/>		
+		<one-to-one name="profile" lazy="no-proxy" cascade="save-update"/>
+		
+		<set name="roles" lazy="false" table="USER_ROLE" cascade="save-update">
+			<cache usage="read-write"/> 
+			<key column="USER_ID"/>
+			<many-to-many class="Role" column="ROLE_ID"/>
+		</set>					
+	</class>
+</hibernate-mapping>

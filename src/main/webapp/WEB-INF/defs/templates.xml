@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>	
+	<definition name="temp.index" template="/index.jsp" />
+
+	<!-- Template Definitions -->
+	<definition name="main" template="/WEB-INF/jsp/template/Main.jsp">
+		<put-attribute name="seo" value="/WEB-INF/jsp/common/seo.jsp" />
+		<put-attribute name="title" value="/WEB-INF/jsp/common/title.jsp" />
+		<put-attribute name="styles" value="/WEB-INF/jsp/common/styles.jsp"/>
+		<put-attribute name="scripts" value="/WEB-INF/jsp/common/scripts.jsp"/>		
+		<put-attribute name="header" value="/WEB-INF/jsp/common/header.jsp" />		
+		<put-attribute name="main.nav" value="/WEB-INF/jsp/common/main.nav.jsp" />
+		<put-attribute name="content" value=""/>
+		<put-attribute name="ads" value="/WEB-INF/jsp/common/ads.jsp" />				
+		<put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp"/>		
+		<put-attribute name="google.analytics" value="/WEB-INF/jsp/common/google.analytics.jsp"/>			
+	</definition>
+	<definition name="dialog" template="/WEB-INF/jsp/template/Dialog.jsp">
+		<put-attribute name="styles" value="/WEB-INF/jsp/common/styles.jsp"/>
+		<put-attribute name="title" value="" type="string"/>
+		<put-attribute name="content" value=""/>
+		<put-attribute name="scripts" value="/WEB-INF/jsp/common/scripts.jsp"/>
+		<put-attribute name="google.analytics" value="/WEB-INF/jsp/common/google.analytics.jsp"/>					
+	</definition>
+	<definition name="contest" extends="main">
+		<put-attribute name="seo" value="/WEB-INF/jsp/contest/seo.jsp" />
+		<put-attribute name="title" value="/WEB-INF/jsp/contest/title.jsp" />
+	</definition>
+	<definition name="event" extends="main">
+		<put-attribute name="seo" value="/WEB-INF/jsp/event/seo.jsp" />
+		<put-attribute name="title" value="/WEB-INF/jsp/event/title.jsp" />
+	</definition>
+	<definition name="news" extends="main">
+		<put-attribute name="seo" value="/WEB-INF/jsp/newsArticle/seo.jsp" />
+		<put-attribute name="title" value="/WEB-INF/jsp/newsArticle/title.jsp" />
+	</definition>
+	<definition name="profile" extends="main">
+		<put-attribute name="seo" value="/WEB-INF/jsp/profile/seo.jsp" />
+		<put-attribute name="title" value="/WEB-INF/jsp/profile/title.jsp" />
+	</definition>
+	<definition name="story" extends="main">
+		<put-attribute name="seo" value="/WEB-INF/jsp/story/seo.jsp" />
+		<put-attribute name="title" value="/WEB-INF/jsp/story/title.jsp" />
+	</definition>	
+	<!-- /Template Definitions -->
+	
+	
+	<!-- Error Pages -->
+	<definition name="500" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/errorpages/500.jsp"/>
+	</definition>
+	<definition name="404" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/errorpages/404.jsp"/>
+	</definition>
+	<definition name="access.denied" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/errorpages/401.jsp"/>
+	</definition>
+	<!-- /Error Pages -->	
+	
+	
+	<!-- Primary content -->
+	<definition name="admin" extends="main">		
+		<put-attribute name="content" value="/WEB-INF/jsp/content/admin.jsp"/>					
+	</definition>		
+	<definition name="home" extends="main">		
+		<put-attribute name="content" value="/WEB-INF/jsp/content/home.jsp"/>					
+	</definition>
+	<definition name="howto" extends="dialog">		
+		<put-attribute name="content" value="/WEB-INF/jsp/content/howto.jsp"/>					
+	</definition>				
+	<definition name="privacy" extends="main">		
+		<put-attribute name="content" value="/WEB-INF/jsp/content/privacy.jsp"/>					
+	</definition>
+	<definition name="tos" extends="main">		
+		<put-attribute name="content" value="/WEB-INF/jsp/content/tos.jsp"/>					
+	</definition>
+	<!-- /Primary Content -->
+	
+	
+	<!-- Ad Views -->
+	<definition name="listAd" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/ad/list.jsp" />
+	</definition>		
+	<definition name="formAd" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/ad/form.jsp" />
+	</definition>
+	<definition name="adclicks" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/ad/adclicks.jsp" />
+	</definition>
+	<!-- /Ad Views -->
+	
+	
+	<!-- Affiliate Views -->
+	<definition name="list.affiliates" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/affiliate/list.jsp" />
+	</definition>		
+	<definition name="affiliates.form" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/affiliate/form.jsp" />
+	</definition>
+	<definition name="manage.affiliates" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/affiliate/manage.jsp" />
+	</definition>
+	<!-- /Affiliate Views -->
+	
+	<!-- Badge Views -->
+	<definition name="listBadge" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/badge/list.jsp" />
+	</definition>		
+	<definition name="formBadge" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/badge/form.jsp" />
+	</definition>
+	<!-- /Badge Views -->
+	
+	<!-- Category Views -->
+	<definition name="listCategory" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/category/list.jsp" />
+	</definition>		
+	<definition name="formCategory" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/category/form.jsp" />
+	</definition>
+	<!-- /Category Views -->
+	
+	<!-- Contest Views -->
+	<definition name="contestForm" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/contest/form.jsp" />
+	</definition>
+	<definition name="listContests" extends="contest">
+		<put-attribute name="content" value="/WEB-INF/jsp/contest/list.jsp" />
+	</definition>		
+	<definition name="manageContests" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/contest/manage.jsp" />
+	</definition>
+	<definition name="showContest" extends="contest">
+		<put-attribute name="content" value="/WEB-INF/jsp/contest/show.jsp" />
+	</definition>
+	<!-- /Contest Views -->
+	
+	<!-- Contest Prize Views -->
+	<definition name="listContestPrize" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/contestPrize/list.jsp" />
+	</definition>		
+	<definition name="formContestPrize" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/contestPrize/form.jsp" />
+	</definition>
+	<!-- /Contest Prize Views -->
+	
+	
+	<!-- Event Views -->
+	<definition name="listEvents" extends="event">
+		<put-attribute name="content" value="/WEB-INF/jsp/event/list.jsp" />
+	</definition>		
+	<definition name="eventForm" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/event/form.jsp" />
+	</definition>
+	<definition name="showEvent" extends="event">
+		<put-attribute name="content" value="/WEB-INF/jsp/event/show.jsp" />
+	</definition>
+	<definition name="manageEvents" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/event/manage.jsp" />
+	</definition>
+	<definition name="create.event.dialog" extends="dialog">		
+		<put-attribute name="content" value="/WEB-INF/jsp/event/create.dialog.jsp"/>					
+	</definition>
+	<definition name="create.event.success.dialog" extends="dialog">		
+		<put-attribute name="content" value="/WEB-INF/jsp/event/create.success.dialog.jsp"/>					
+	</definition>
+	<!-- /Event Views -->
+	
+	
+	<!-- Footer Link Views -->
+	<definition name="listFooterLink" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/footerLink/list.jsp" />
+	</definition>		
+	<definition name="formFooterLink" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/footerLink/form.jsp" />
+	</definition>
+	<!-- /Footer Link Views -->
+	
+	
+	<!-- Image Views -->
+	<definition name="listImage" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/image/list.jsp" />
+	</definition>
+	<definition name="create.album" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/image/create.album.jsp" />
+	</definition>
+	<definition name="show.album" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/image/show.album.jsp" />
+	</definition>
+	
+	<definition name="showImage" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/image/show.jsp" />
+	</definition>
+	<definition name="formImage" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/image/form.jsp" />
+	</definition>
+	<!-- /Image Views -->
+	
+		
+	<!-- News Article Views -->
+	<definition name="listNewsArticle" extends="news">
+		<put-attribute name="content" value="/WEB-INF/jsp/newsArticle/list.jsp" />
+	</definition>		
+	<definition name="formNewsArticle" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/newsArticle/form.jsp" />
+	</definition>
+	<definition name="manageNewsArticles" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/newsArticle/manage.jsp" />
+	</definition>
+	<definition name="showNewsArticle" extends="news">
+		<put-attribute name="content" value="/WEB-INF/jsp/newsArticle/show.jsp" />
+	</definition>	
+	<definition name="create.article.dialog" extends="dialog">		
+		<put-attribute name="content" value="/WEB-INF/jsp/newsArticle/create.dialog.jsp"/>					
+	</definition>
+	<definition name="create.article.success.dialog" extends="dialog">		
+		<put-attribute name="content" value="/WEB-INF/jsp/newsArticle/create.success.dialog.jsp"/>					
+	</definition>
+	<!-- /News Article Views -->
+	
+	<!-- Order Views -->
+	<definition name="cart" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/order/cart.jsp" />
+	</definition>		
+	<definition name="checkout" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/order/checkout.jsp" />
+	</definition>
+	<definition name="history" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/sellableItem/history.jsp" />
+	</definition>	
+	<!-- /Order Views -->
+	
+		
+	<!-- Profile Views -->
+	<definition name="profile.not.found" extends="main">		
+		<put-attribute name="content" value="/WEB-INF/jsp/profile/profile.not.found.jsp" />						
+	</definition>
+	<definition name="members" extends="profile">		
+		<put-attribute name="content" value="/WEB-INF/jsp/profile/list.jsp"/>					
+	</definition>
+	<!-- /Profile Views -->
+	
+	<!-- My Profile Views -->
+	<definition name="my.profile" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/my.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/feed.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>
+	<definition name="my.profile.badges" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/my.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/badges.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>
+	<definition name="my.profile.friends" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/my.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/friends.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>	
+	<definition name="my.profile.gallery" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/my.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/gallery.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>		
+	<definition name="my.profile.info" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/my.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/info.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>	
+	<definition name="my.profile.photos" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/my.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/photos.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>
+	<definition name="my.profile.wall" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/my.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/wall.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>	
+	<definition name="my.profile.stories" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/my.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/stories.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>
+	<definition name="profile.edit" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/my.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/edit.profile.jsp" />		      
+		    </definition>
+		</put-attribute>		
+	</definition>
+	<definition name="profile.feed" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/my.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/feed.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>
+	<definition name="profile.inbox" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/my.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/inbox.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>
+	<definition name="profile.messages.received" template="/WEB-INF/jsp/profile/messages.received.jsp" />
+	<definition name="profile.messages.sent" template="/WEB-INF/jsp/profile/messages.sent.jsp" />
+	<definition name="profile.pic" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/my.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/profile.pic.jsp"/>			      
+		    </definition>
+		</put-attribute>						
+	</definition>
+	<definition name="imageupload" extends="main">		
+		<put-attribute name="content" value="/WEB-INF/jsp/profile/image.upload.jsp"/>					
+	</definition>
+	<definition name="send.message.dialog" extends="dialog">
+		<put-attribute name="content" value="/WEB-INF/jsp/profile/send.message.dialog.jsp"/>
+	</definition>	
+	<definition name="read.message.dialog" extends="dialog">
+		<put-attribute name="content" value="/WEB-INF/jsp/profile/read.message.dialog.jsp"/>
+	</definition>
+	<definition name="message.sent.dialog" extends="dialog">
+		<put-attribute name="content" value="/WEB-INF/jsp/profile/message.sent.dialog.jsp"/>
+	</definition>
+	<definition name="change.password.dialog" extends="dialog">		
+		<put-attribute name="content" value="/WEB-INF/jsp/profile/change.password.dialog.jsp"/>					
+	</definition>
+	<!-- /My Profile Views -->
+	
+	
+	<!-- Public Profile Views -->
+	<definition name="public.profile" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/public.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/wall.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>
+	<definition name="public.profile.badges" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/public.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/badges.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>
+	<definition name="public.profile.friends" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/public.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/friends.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>	
+	<definition name="public.profile.gallery" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/public.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/gallery.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>		
+	<definition name="public.profile.info" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/public.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/info.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>	
+	<definition name="public.profile.photos" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/public.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/photos.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>
+	<definition name="public.profile.wall" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/public.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/wall.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>	
+	<definition name="public.profile.stories" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/public.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/stories.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>
+	<!-- /Public Profile Views -->
+	
+	
+	<!-- Private Profile Views -->
+	<definition name="private.profile" extends="profile">
+		<put-attribute name="content">
+			<definition template="/WEB-INF/jsp/profile/private.profile.jsp">
+				<put-attribute name="profile.content" value="/WEB-INF/jsp/profile/wall.jsp" />		      
+		    </definition>
+		</put-attribute>
+	</definition>
+	<!-- /Private Profile Views -->
+	
+	
+	<!-- Prize Views -->
+	<definition name="listPrize" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/prize/list.jsp" />
+	</definition>		
+	<definition name="formPrize" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/prize/form.jsp" />
+	</definition>
+	<!-- /Prize Views -->
+	
+	
+	<!-- Referral Views -->
+	<definition name="refer.form" extends="main">		
+		<put-attribute name="content" value="/WEB-INF/jsp/refer/form.jsp"/>					
+	</definition>
+	<definition name="refer.success" extends="main">		
+		<put-attribute name="content" value="/WEB-INF/jsp/refer/success.jsp"/>					
+	</definition>
+	<!-- /Referral Views -->
+	
+	
+	<!-- Registration Views -->
+	<definition name="acct.enabled" extends="main">		
+		<put-attribute name="content" value="/WEB-INF/jsp/register/acct.enabled.jsp"/>					
+	</definition>	
+	<definition name="conf.email.sent" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/register/conf.email.sent.jsp"/>
+	</definition>
+	<definition name="signup.dialog" extends="dialog">		
+		<put-attribute name="content" value="/WEB-INF/jsp/register/signup.jsp"/>					
+	</definition>
+	<definition name="signin" extends="main">		
+		<put-attribute name="content" value="/WEB-INF/jsp/register/signin.jsp"/>					
+	</definition>
+	<definition name="signup" extends="main">		
+		<put-attribute name="content" value="/WEB-INF/jsp/register/signup.jsp"/>					
+	</definition>	
+	<!-- /Registration Views -->
+
+	<!-- Sellable Item Views -->
+	<definition name="addtocart.dialog" template="/WEB-INF/jsp/sellableItem/addtocart.dialog.jsp" />
+	<definition name="listSellableItem" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/sellableItem/list.jsp" />
+	</definition>		
+	<definition name="formSellableItem" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/sellableItem/form.jsp" />
+	</definition>
+	<definition name="showSellableItem" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/sellableItem/show.jsp" />
+	</definition>	
+	<!-- /Sellable Item Views -->
+
+	<!-- Story Views -->	
+	<definition name="listStory" extends="story">
+		<put-attribute name="content" value="/WEB-INF/jsp/story/list.jsp" />
+	</definition>		
+	<definition name="formStory" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/story/form.jsp" />
+	</definition>
+	<definition name="manageStories" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/story/manage.jsp" />
+	</definition>
+	<definition name="showStory" extends="story">
+		<put-attribute name="content" value="/WEB-INF/jsp/story/show.jsp" />
+	</definition>	
+	<definition name="submit.story.success" extends="main">		
+		<put-attribute name="content" value="/WEB-INF/jsp/story/submit.story.success.jsp"/>					
+	</definition>
+	<!-- /Story Views -->
+
+
+	<!-- User Views -->
+	<definition name="userList" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/user/list.jsp" />
+	</definition>		
+	<definition name="userForm" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/user/form.jsp" />
+	</definition>
+	<definition name="pwreset" extends="main">		
+		<put-attribute name="content" value="/WEB-INF/jsp/user/pwreset.jsp"/>					
+	</definition>
+	<definition name="pwreset.conf.email.sent" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/user/pwreset.conf.email.sent.jsp"/>
+	</definition>	
+	<!-- /User Views -->
+	
+	<!-- Video Views -->	
+	<definition name="listVideo" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/video/list.jsp" />
+	</definition>		
+	<definition name="videoForm" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/video/form.jsp" />
+	</definition>
+	<definition name="showVideo" extends="main">
+		<put-attribute name="content" value="/WEB-INF/jsp/video/show.jsp" />
+	</definition>	
+	<!-- /Video Views -->			
+</tiles-definitions>

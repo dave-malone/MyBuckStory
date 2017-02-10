@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="MemberFeedItem" table="Member_Feed">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>		
+		
+		<version name="version"></version>
+				
+		<property name="lastUpdated" column="last_updated" type="timestamp" />					
+		<property name="dateCreated" column="date_created" type="timestamp" />
+		<property name="type" column="type" type="string" />	
+		
+		<many-to-one name="createdBy" class="User" column="AUTHOR_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="lastUpdatedBy" class="User" column="LAST_UPDATED_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="affiliate" class="Affiliate" column="AFFILIATE_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="album" class="Album" column="ALBUM_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="albumImage" class="Image" column="ALBUM_IMAGE_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="badge" class="Badge" column="BADGE_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="contest" class="Contest" column="CONTEST_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="contestPrize" class="ContestPrize" column="Contest_PRIZE_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="event" class="Event" column="EVENT_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="friendRequest" class="FriendRequest" column="FRIEND_REQUEST_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="image" class="Image" column="IMAGE_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="imageComment" class="Comment" column="IMAGE_COMMENT_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="profile" class="Profile" column="PROFILE_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="story" class="Story" column="STORY_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="storyComment" class="Comment" column="STORY_COMMENT_ID" cascade="none" fetch="join" lazy="false"/>		
+		<many-to-one name="profileImage" class="Image" column="PROFILE_IMAGE_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="video" class="Video" column="VIDEO_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="videoComment" class="Comment" column="VIDEO_COMMENT_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="wallPostComment" class="Comment" column="WALL_POST_COMMENT_ID" cascade="none" fetch="join" lazy="false"/>
+		<many-to-one name="wallPost" class="WallPost" column="WALL_POST_ID" cascade="none" fetch="join" lazy="false"/>		
+	</class>
+</hibernate-mapping>

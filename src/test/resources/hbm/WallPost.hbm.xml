@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="WallPost" table="WALL_POST">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>		
+		
+		<version name="version"></version>
+				
+		<property name="lastUpdated" column="last_updated" type="timestamp" />					
+		<property name="dateCreated" column="date_created" type="timestamp" />
+		<property name="message" column="message" type="string" />
+		
+		
+		<many-to-one name="createdBy" class="User" column="AUTHOR_ID" cascade="none" />
+		<many-to-one name="lastUpdatedBy" class="User" column="LAST_UPDATED_ID" cascade="none"/>		
+		<many-to-one name="target" class="Profile" column="PROFILE_ID" cascade="all" />
+		
+		<set name="likes" cascade="all" lazy="true" sort="natural">
+			<cache usage="read-write"/>
+			<key column="WALL_POST_ID" />
+			<one-to-many class="Like" />			
+		</set>		
+		<set name="comments" cascade="all" lazy="true" sort="natural">
+			<cache usage="read-write"/>
+			<key column="WALL_POST_ID" />
+			<one-to-many class="Comment" />			
+		</set>		
+	</class>
+</hibernate-mapping>

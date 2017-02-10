@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/* IE6 CSS Document */
+
+#featured-stories.navset .nav a em,
+#featured-stories.navset .navset-top .yui-nav a em,
+#featured-news.navset .nav a em,
+#featured-news.navset .navset-top .nav a em {width: 22%}
+
+#ft div.wrap ul {
+	display: inline;
+}

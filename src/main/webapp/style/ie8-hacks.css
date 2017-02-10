@@ -1,0 +1,94 @@
+@charset "UTF-8";
+/* IE8 CSS Document */
+
+#featured-stories.navset .nav a em,
+#featured-stories.navset .navset-top .nav a em,
+#featured-news.navset .nav a em,
+#featured-news.navset .navset-top .nav a em {width: 145px;padding:0.25em}
+
+#featured-stories.navset .content,
+#featured-stories.navset .navset-top .content,
+#featured-news.navset .content,
+#featured-news.navset .navset-top .yui-content {
+    margin-bottom:-7px
+}
+.main-site-nav { height: 40px; }
+.main-site-nav a {
+    background: #5f4b30; /* tab background */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color:#fff;
+    border: none;
+    text-decoration: none;
+    padding: 8px 40px 8px 5px;
+    font-style: normal;
+    margin-top:15px;
+}
+.main-site-nav a:hover {
+    background: #5f4b30; /* tab background */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color:#fff;
+    border: none;
+    text-decoration: none;
+    padding: 8px 40px 8px 5px;
+    font-style: normal;
+    margin-top:15px;
+}
+.main-site-nav .selected a {
+    background: #af7c13; /* tab background */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: white;
+    border: none;
+    text-decoration: none;
+    padding: 8px 15px 8px 5px;
+    font-style: normal;
+}
+.main-site-nav .selected a:hover {
+    background: #af7c13; /* tab background */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: white;
+    border: none;
+    text-decoration: none;
+    padding: 23px 15px 2px 5px;
+    font-style: normal;
+}
+.main-site-nav li {
+	border-top: 1px #8d7453 solid;
+    border-left: 1px #8d7453 solid;
+    border-right: 1px #8d7453 solid;
+    background: url(../images/main-nav-bg.jpg)repeat-x bottom;
+    margin-top: 0;
+    margin-left: 3px;
+    margin-right: -20px;
+    height: 15px;
+    padding: 0 0 2px;
+    float: left;
+}
+.main-site-nav .selected li {
+	border: 1px #8d7453 solid;
+	
+    background: url(../images/main-nav-bg.jpg)repeat-x bottom;
+    margin-left: 9px;
+    padding-bottom: none;
+    height: 15px;
+    padding: 2px 0;
+}
+.main-site-nav li em {
+	font-style: normal;
+	background: none;
+}
+.main-site-nav .selected {
+	margin-right: -30px;	
+}
+.main-site-nav .selected em {
+	background: none;	
+}
+.navset .main-content {
+    margin-top: 2px;
+}
+.members-grey { 
+	width: 580px;
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="StoryVote" table="STORY_VOTE">
+		<cache usage="read-write"/>
+		<composite-id name="pk" class="StoryVotePK">
+			<key-property name="voterId" column="VOTER_ID" type="java.lang.Long"/>
+			<key-property name="storyId" column="STORY_ID" type="java.lang.Long"/>
+		</composite-id>	
+		
+		<property name="lastUpdated" column="last_updated" type="timestamp" />					
+		<property name="dateCreated" column="date_created" type="timestamp" />		
+	</class>
+</hibernate-mapping>

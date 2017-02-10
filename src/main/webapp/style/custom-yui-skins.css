@@ -1,0 +1,597 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* .yui-navset defaults to .yui-navset-top */
+
+yui-button {
+	border: 1px solid #b6b6b6;
+}
+
+.mainholder {
+	background: url(../images/fill2.png);
+	width: 76%;
+	float: left;
+	padding: 0 10px 10px 10px;
+	height: auto;
+}
+
+.sideholder {
+	width: 20%;
+	float: right;
+}
+.main-site-nav { /* protect nested tabviews from other orientations */
+    border:none; /* color between tab list and content */
+	padding:0;
+	background: none;
+	margin-top: 0;
+	margin-left: 10px;
+}
+.main-site-nav li {
+    margin-right: -10px;
+    padding:0; /* gecko: make room for overflow */
+    width: 90px;
+    height: 25px;
+    background: none;
+    display: inline;
+    zoom:1;    
+}
+
+.main-site-nav .selected { 
+    margin-right: -5px;
+	display: inline;
+
+}
+
+.main-site-nav a {
+    background: url(../images/main-nav-bg.jpg)repeat-x bottom #604c33; /* tab background */
+    border-top: 1px #8d7453 solid;
+    border-left: 1px #8d7453 solid;
+    border-right: 1px #8d7453 solid;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color:#fff;
+    text-decoration: none;
+    padding: 8px 20px 5px 5px;
+}
+
+.main-site-nav a:hover { background: none; }
+
+.main-site-nav a em {
+    cursor: hand;
+    padding: 0.5em  .45em .1em .2em;
+    left:0; right: 0; bottom: 0; /* protect from other orientations */
+    position:relative;
+    text-transform: capitalize;
+    letter-spacing: .08em;
+}
+
+.main-site-nav .selected a,
+.main-site-nav .selected a:focus, /* no focus effect for selected */
+.main-site-nav .selected a:hover { /* no hover effect for selected */
+    background: url(../images/active-nav-bg.jpg)repeat-x bottom #e09225; /* tab background */
+    color: white;
+    padding: 10px 20px 5px 5px;
+}
+
+.main-site-nav .selected em { 
+	background: url(../images/active-nav-corner.jpg) no-repeat top left;	
+}
+
+.main-site-nav a:hover,
+.main-site-nav a:focus {
+    background: url(../images/main-nav-bg.jpg)repeat-x bottom; /* tab background */
+    outline:0;
+}
+
+.main-site-nav .selected a em {
+    padding: 0.5em  .45em .1em .2em; /* raise selected tab */
+}
+
+.main-site-nav .selected a,
+.main-site-nav .selected a em {
+    border-color: #243356; /* selected tab border color */
+}
+
+.navset .main-content {
+    background: url(../images/content-bg.png); /* content background color */
+    border: 1px solid white; width: 950px;
+}
+
+.main-content {
+	border: 1px solid #89856d;	
+}
+
+.navset .main-content {
+    border-top: none; /* content border */
+	border-bottom: none;
+	border-right: none;
+	border-left: none;
+    padding:0 1em 0 0; /* content padding */
+    margin-top: 5px;
+}
+
+
+/* .yui-navset defaults to .yui-navset-top */
+#featured-stories.navset .main-site-nav,
+#featured-stories.navset .yui-navset-top .yui-nav { /* protect nested tabviews from other orientations */
+    border: none; /* color between tab list and content */
+    border-width:0 0 0;
+    Xposition:relative;
+	padding-left:10px;
+	padding-right: 0;
+    zoom:1;
+	margin-top: -2px;
+}
+
+#featured-stories.navset .yui-nav li,
+#featured-stories.navset .yui-navset-top .main-site-nav li {
+    margin:0 0.16em 0 0; /* space between tabs */
+    padding:1px 0 0; /* gecko: make room for overflow */
+    zoom:1;
+}
+
+#featured-stories.navset .main-site-nav .selected,
+#featured-stories.navset .yui-navset-top .main-site-nav .selected { 
+    margin:0 0.16em 1px 0; /* for overlap */
+}
+
+#featured-stories.navset .main-site-nav a,
+#featured-stories.navset .yui-navset-top .main-site-nav a {
+    background: url(../images/sprite.png) repeat-x; /* tab background */
+    border:1px solid #d1d1d1;
+    border-width:1px;
+    color:#000;
+    text-decoration:none;
+}
+
+#featured-stories.navset .main-site-nav a em,
+#featured-stories.navset .yui-navset-top .main-site-nav a em {
+    border:none;
+    cursor:hand;
+	width:150px;
+    padding:0.25em 0.25em 0 0.25em;
+    left:0; right: 0; bottom: 0; /* protect from other orientations */
+    top:0; /* for 1px rounded corners */
+    position:relative;
+}
+
+#featured-stories.navset .main-site-nav .selected a,
+#featured-stories.navset .main-site-nav .selected a:focus, /* no focus effect for selected */
+#featured-stories.navset .main-site-nav .selected a:hover { /* no hover effect for selected */
+    background: #f8f8f8; /* selected tab background */
+    color:#000;
+}
+
+#featured-stories.navset .main-site-nav a:hover,
+#featured-stories.navset .main-site-nav a:focus {
+    background: #fff; /* selected tab background */
+    outline:0;
+}
+
+#featured-stories.navset .main-site-nav .selected a em {
+    padding:0.25em; /* raise selected tab */
+}
+
+#featured-stories.navset .main-content {
+    background:#f8f8f8; /* content background color */
+    height: 175px;
+}
+
+#featured-stories.navset .main-content,
+#featured-stories.navset .yui-navset-top .main-content {
+    border:1px solid #aaa; /* content border */
+    padding:5px; /* content padding */
+}
+
+
+
+
+
+
+/* .yui-navset defaults to .yui-navset-top */
+#featured-news.navset .main-site-nav,
+#featured-news.navset .yui-navset-top .main-site-nav { /* protect nested tabviews from other orientations */
+    border: none; /* color between tab list and content */
+    border-width:0 0 0;
+    Xposition:relative;
+	padding-left:10px;
+	padding-right: 0;
+    zoom:1;
+	margin-top: -2px;
+}
+
+#featured-news.navset .main-site-nav li,
+#featured-news.navset .yui-navset-top .main-site-nav li {
+    margin:0 0.16em 0 0; /* space between tabs */
+    padding:1px 0 0; /* gecko: make room for overflow */
+    zoom:1;
+}
+
+#featured-news.navset .main-site-nav .selected,
+#featured-news.navset .yui-navset-top .main-site-nav .selected { 
+    margin:0 0.16em -1px 0; /* for overlap */
+}
+
+#featured-news.navset .main-site-nav a,
+#featured-news.navset .yui-navset-top .main-site-nav a {
+    background: url(../images/sprite.png) repeat-x; /* tab background */
+    border:1px solid #d1d1d1;
+    border-width:1px;
+    color:#000;
+    text-decoration:none;
+}
+
+#featured-news.navset .main-site-nav a em,
+#featured-news.navset .yui-navset-top .main-site-nav a em {
+    border: none;
+    cursor:hand;
+	width: 150px;
+    padding:0.25em;
+    left:0; right: 0; bottom: 0; /* protect from other orientations */
+    top:0; /* for 1px rounded corners */
+    position:relative;
+}
+
+#featured-news.navset .main-site-nav .selected a,
+#featured-news.navset .main-site-nav .selected a:focus, /* no focus effect for selected */
+#featured-news.navset .main-site-nav .selected a:hover { /* no hover effect for selected */
+    background: #f8f8f8; /* selected tab background */
+    color:#000;
+}
+
+#featured-news.navset .main-site-nav a:hover,
+#featured-news.navset .main-site-nav a:focus {
+    background: #fff; /* selected tab background */
+    outline:0;
+}
+
+#featured-news.navset .main-site-nav .selected a em {
+    padding:0.25em; /* raise selected tab */
+}
+
+#featured-news.navset .main-content {
+    background:#f8f8f8; /* content background color */
+    height: 175px;
+}
+
+#featured-news.navset .main-content,
+#featured-news.navset .yui-navset-top .main-content {
+    border:1px solid #aaa; /* content border */
+    padding:0.75em; /* content padding */
+}
+
+.profile-main {
+	background: none;
+	height: auto;
+}
+.profile-container {
+	background: none;
+}
+
+
+
+
+
+
+/* .yui-navset defaults to .yui-navset-top */
+#myProfileContainer.navset .main-site-nav,
+#myProfileContainer.navset .yui-navset-top .main-site-nav { /* protect nested tabviews from other orientations */
+    border:solid #1f1100; /* color between tab list and content */
+    border-width:0 0 5px;
+    Xposition:relative;
+    zoom:1;
+	margin-top: 0;
+}
+
+#myProfileContainer.navset .main-site-nav li,
+#myProfileContainer.navset .yui-navset-top .main-site-nav li {
+    margin:0 0.16em 0 0; /* space between tabs */
+    padding:1px 0 0; /* gecko: make room for overflow */
+    zoom:1;
+}
+
+#myProfileContainer.navset .main-site-nav .selected,
+#myProfileContainer.navset .yui-navset-top .main-site-nav .selected { 
+    margin:0 0.16em -1px 0; /* for overlap */
+}
+
+#myProfileContainer.navset .main-site-nav a,
+#myProfileContainer.navset .yui-navset-top .main-site-nav a {
+    background:#d8d8d8 url(../images/sprite.png) repeat-x; /* tab background */
+    border:solid #a3a3a3;
+    border-width:0 1px;
+    color:#000;
+    text-decoration:none;
+}
+
+#myProfileContainer.navset .main-site-nav a em,
+#myProfileContainer.navset .yui-navset-top .main-site-nav a em {
+    border:solid #a3a3a3;
+    border-width:1px 0 0;
+    cursor:hand;
+    padding:0.25em .75em;
+    left:0; right: 0; bottom: 0; /* protect from other orientations */
+    top:-1px; /* for 1px rounded corners */
+    position:relative;
+}
+
+#myProfileContainer.navset .main-site-nav .selected a,
+#myProfileContainer.navset .main-site-nav .selected a:focus, /* no focus effect for selected */
+#myProfileContainer.navset .main-site-nav .selected a:hover { /* no hover effect for selected */
+    background:#2647a0 url(../images/sprite.png) repeat-x left -1400px; /* selected tab background */
+    color:#fff;
+}
+
+#myProfileContainer.navset .main-site-nav a:hover,
+#myProfileContainer.navset .main-site-nav a:focus {
+    background:#bfdaff url(../images/sprite.png) repeat-x left -1300px; /* selected tab background */
+    outline:0;
+}
+
+#myProfileContainer.navset .main-site-nav .selected a em {
+    padding:0.35em 0.75em; /* raise selected tab */
+}
+
+#myProfileContainer.navset .main-site-nav .selected a,
+#myProfileContainer.navset .main-site-nav .selected a em {
+    border-color:#243356; /* selected tab border color */
+}
+
+#myProfileContainer.navset .main-content {
+    background:#fff; /* content background color */
+}
+
+#myProfileContainer.navset .main-content,
+#myProfileContainer.navset .yui-navset-top .main-content {
+    border-top:1px solid #808080; /* content border */
+    border-left:none; /* content border */
+    border-right:none; /* content border */
+    border-bottom:none; /* content border */
+    border-top-color:#1f1100; /* different border color */
+    padding:0.25em 0.5em; /* content padding */
+}
+
+
+
+
+
+
+/* .yui-navset defaults to .yui-navset-top */
+#profileContainer.navset .main-site-nav,
+#profileContainer.navset .yui-navset-top .main-site-nav,
+#frequent.navset .main-site-nav,
+#frequent.navset .yui-navset-top .main-site-nav { /* protect nested tabviews from other orientations */
+    border:solid #1f1100; /* color between tab list and content */
+    border-width:0 0 5px;
+    Xposition:relative;
+    zoom:1;
+	margin-top: 1em;
+}
+
+#profileContainer.navset .main-site-nav li,
+#profileContainer.navset .yui-navset-top .main-site-nav li,
+#frequent.navset .main-site-nav li,
+#frequent.navset .yui-navset-top .main-site-nav li {
+    margin:0 0.16em 0 0; /* space between tabs */
+    padding:1px 0 0; /* gecko: make room for overflow */
+    zoom:1;
+}
+
+#profileContainer.navset .main-site-nav .selected,
+#profileContainer.navset .yui-navset-top .main-site-nav .selected,
+#frequent.navset .main-site-nav .selected,
+#frequent.navset .yui-navset-top .main-site-nav .selected { 
+    margin:0 0.16em -1px 0; /* for overlap */
+}
+
+#profileContainer.navset .main-site-nav a,
+#profileContainer.navset .yui-navset-top .main-site-nav a,
+#frequent.navset .main-site-nav a,
+#frequent.navset .yui-navset-top .main-site-nav a {
+    background:#d8d8d8 url(../images/sprite.png) repeat-x; /* tab background */
+    border:solid #a3a3a3;
+    border-width:0 1px;
+    color:#000;
+    text-decoration:none;
+}
+
+#profileContainer.navset .main-site-nav a em,
+#profileContainer.navset .yui-navset-top .main-site-nav a em,
+#frequent.navset .main-site-nav a em,
+#frequent.navset .yui-navset-top .main-site-nav a em {
+    border:solid #a3a3a3;
+    border-width:1px 0 0;
+    cursor:hand;
+    padding:0.25em .75em;
+    left:0; right: 0; bottom: 0; /* protect from other orientations */
+    top:-1px; /* for 1px rounded corners */
+    position:relative;
+}
+
+#profileContainer.navset .main-site-nav .selected a,
+#profileContainer.navset .main-site-nav .selected a:focus, /* no focus effect for selected */
+#profileContainer.navset .main-site-nav .selected a:hover,
+#frequent.navset .main-site-nav .selected a,
+#frequent.navset .main-site-nav .selected a:focus, /* no focus effect for selected */
+#frequent.navset .main-site-nav .selected a:hover { /* no hover effect for selected */
+    background:#2647a0 url(../images/sprite.png) repeat-x left -1400px; /* selected tab background */
+    color:#fff;
+}
+
+#profileContainer.navset .main-site-nav a:hover,
+#profileContainer.navset .main-site-nav a:focus,
+.#frequent.navset .main-site-nav a:hover,
+#frequent.navset .main-site-nav a:focus {
+    background:#bfdaff url(../images/sprite.png) repeat-x left -1300px; /* selected tab background */
+    outline:0;
+}
+
+#profileContainer.navset .main-site-nav .selected a em,
+#frequent.navset .main-site-nav .selected a em {
+    padding:0.35em 0.75em; /* raise selected tab */
+}
+
+#profileContainer.navset .main-site-nav .selected a,
+#profileContainer.navset .main-site-nav .selected a em,
+#frequent.navset .main-site-nav .selected a,
+#frequent.navset .main-site-nav .selected a em {
+    border-color:#243356; /* selected tab border color */
+}
+
+#profileContainer.navset .main-content,
+#frequent.navset .main-content {
+    background:#fff; /* content background color */
+}
+
+#profileContainer.navset .main-content,
+#profileContainer.navset .yui-navset-top .main-content,
+#frequent.navset .main-content,
+#frequent.navset .yui-navset-top .main-content {
+    border-top:1px solid #808080; /* content border */
+    border-left:none; /* content border */
+    border-right:none; /* content border */
+    border-bottom:none; /* content border */
+    border-top-color:#1f1100; /* different border color */
+    padding:0.25em 0.5em; /* content padding */
+}
+
+#frequent {width: 50em}
+#frequent.navset .main-content,
+#frequent.navset .yui-navset-top .main-content {
+    border:1px solid #1f1100; /* content border */
+	height: 250px;
+	overflow: auto;
+    padding:0.25em 0.5em; /* content padding */
+}
+
+
+
+
+.main-t2 {width: 726px}
+
+
+
+
+
+.yui-accordionview div.yui-accordion-content {
+	overflow: hidden;
+	margin: 0;
+	padding: 1em;
+}
+.hidden {
+	visibility: hidden;
+	position: absolute;
+}
+
+.almosthidden {
+	position: absolute;
+	left: -9999px;
+	z-index: -10;
+}
+
+.yui-accordionview {
+	border-bottom: 1px #A3A3A3 solid;
+}
+
+.yui-accordionview li.yui-accordion-panel {
+	display: inline;
+}
+
+ul.yui-accordionview ul.yui-accordionview {
+    zoom: 1;
+}
+
+.yui-accordionview li.yui-accordion-panel a.yui-accordion-toggle {
+	display: block;
+	border: 1px #A3A3A3 solid;
+	border-bottom: none;
+	padding: 0.3em;
+	height: 1.5em;
+	padding-left: 0.5em;
+	font-weight: bold;
+	color: #000;
+	text-decoration: none;
+	background: url(../images/sprite.png) repeat-x;
+	background-position: 0 -1500px;
+	position: relative;
+	cursor: pointer;
+}
+
+.yui-accordionview li.yui-accordion-panel a.yui-accordion-toggle:hover {
+	background-position: 0 -1300px;
+}
+.yui-accordionview li.yui-accordion-panel a.yui-accordion-toggle.active {
+	background-position: 0 -1400px;
+	border-color: #243356;
+	border-bottom: 1px #243356 solid;
+	color: #fff;
+}
+.yui-accordionview li.yui-accordion-panel a.yui-accordion-toggle.active:hover {
+	background-position: 0 -1400px;
+}
+
+.yui-accordion-toggle .indicator {
+	display: block;
+	width: 14px;
+	height: 14px;
+	background: url(../images/sprite.png) 0 -350px;
+	position: absolute;
+	right: 0.5em;
+	top: 25%;
+}
+.yui-accordion-toggle.active .indicator {
+	background: url(../images/sprite.png) 0 -400px;
+}
+
+.yui-accordion-content {
+	border-left: 1px #A3A3A3 solid;
+	border-right: 1px #A3A3A3 solid;
+	background: #eff1f2;
+    _zoom: 1;
+}
+
+ul.submenu {
+	background: #fff;
+}
+
+ul.submenu li a {
+	display: block;
+	height: 1.5em;
+	line-height: 1.5em;
+	padding: 0.3em;
+	padding-left: 0.5em;
+	text-decoration: none;
+	color: #000;
+}
+ul.submenu li a:hover {
+	background: #b3d4ff;
+}
+ul.submenu li a:visited, .yui-skin-sam .yui-accordionview li.yui-accordion-panel a.link:visited {
+	color: #777;
+}
+
+
+.yui-accordionview li.yui-accordion-panel a.yui-accordion-toggle:focus {
+	text-decoration: underline;
+}
+.yui-accordionview li.yui-accordion-panel a.yui-accordion-toggle.activepanel {
+	text-decoration: underline;
+}
+
+
+
+.yui-button {
+background:transparent url(../images/sprite.png) repeat-x scroll 0 0;
+height: 22px;
+border: 1px solid #656565;
+}
+#profileButtons .yui-button {
+margin: auto 0
+}
+.yui-dialog .ft span.default {
+background-position: inherit;
+border-color:#304369;
+}
+.yui-dialog .ft span.default button {
+color:#000;
+}

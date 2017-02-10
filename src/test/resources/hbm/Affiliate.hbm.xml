@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="Affiliate" table="AFFILIATE">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>		
+		
+		<version name="version"></version>
+				
+		<property name="name" column="name" type="string" />		
+		<property name="website" column="website" type="string" />
+		<property name="phone" column="phone" type="string" />
+		<property name="fax" column="fax" type="string" />
+		<property name="lastUpdated" column="last_updated" type="timestamp" />					
+		<property name="dateCreated" column="date_created" type="timestamp" />		
+		<property name="description" column="other" type="string" />
+		
+		<component name="address" class="Address">
+			<property name="addressLine1" column="addressLine1" type="string" />	
+			<property name="addressLine2" column="addressLine2" type="string" />
+			<property name="city" column="city" type="string" />
+			<property name="state" column="state" type="string" />
+			<property name="zip" column="zip" type="int" />
+		</component>
+		
+		<many-to-one name="createdBy" class="User" column="AUTHOR_ID" cascade="none"/>
+		<many-to-one name="lastUpdatedBy" class="User" column="LAST_UPDATED_ID" cascade="none"/>	
+		<many-to-one name="image" class="Image" column="IMAGE_ID" cascade="all"/>
+		
+		<set name="memberFeedItems" cascade="all" lazy="true">
+			<key column="AFFILIATE_ID" />
+			<one-to-many class="MemberFeedItem" />			
+		</set>
+	</class>
+</hibernate-mapping>

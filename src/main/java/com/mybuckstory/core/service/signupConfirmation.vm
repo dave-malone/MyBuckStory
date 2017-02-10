@@ -1,0 +1,22 @@
+<html>
+<body>
+	<p>
+		You recently registered for an account on MyBuckStory.com.  To complete your MyBuckStory.com 
+		registration, follow this link:
+		<br />
+		<a href="http://www.mybuckstory.com/register/confirm?uid=${message.id}">
+			http://www.mybuckstory.com/register/confirm?uid=${message.id}
+		</a>
+	</p>
+	<p>
+		This site is designed for you to share your passion for hunting and fishing with thousands of 
+		outdoor enthusiasts alike. Post your story, network with other members, stay up to date with 
+		the latest hunting news, or just browse through all the hunting	and fishing content uploaded 
+		daily!. Once you join, you'll be able to share photos, plan events, and more.
+	<p>
+	<p>
+		Thanks,<br />
+		The MyBuckStory.com Team
+	</p>
+</body>
+</html>

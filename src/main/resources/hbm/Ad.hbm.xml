@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="Ad" table="SIDE_BAR_AD">
+		<cache usage="read-write"/>
+	
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>		
+		
+		<version name="version"></version>
+				
+		<property name="name" column="name" type="string" />		
+		<property name="website" column="website" type="string" />
+		<property name="enabled" column="enabled" type="boolean" />
+		<property name="rank" column="rank" type="java.lang.Integer" />
+		<property name="rawCode" column="raw_code" type="string" />
+		
+		<property name="lastUpdated" column="last_updated" type="timestamp" />					
+		<property name="dateCreated" column="date_created" type="timestamp" />
+		
+		<many-to-one name="createdBy" class="User" column="AUTHOR_ID" cascade="none"/>
+		<many-to-one name="lastUpdatedBy" class="User" column="LAST_UPDATED_ID" cascade="none"/>
+			
+		<many-to-one name="image" class="Image" column="IMAGE_ID" cascade="all"/>
+	</class>
+</hibernate-mapping>

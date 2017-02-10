@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="OrderItem" table="ORDER_ITEM">
+		<cache usage="read-write"/>
+	
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>	
+		
+		<property name="quantity" type="java.lang.Integer" column="quantity" />
+		
+		<property name="lastUpdated" column="last_updated" type="timestamp" />			
+		<property name="dateCreated" column="date_created" type="timestamp" />
+		
+		<many-to-one name="createdBy" class="User" column="CREATED_BY_ID" cascade="none" />
+		<many-to-one name="lastUpdatedBy" class="User" column="LAST_UPDATED_BY_ID" cascade="none" />
+
+		<many-to-one name="order" class="Order" column="ORDER_ID" cascade="none" />
+		<many-to-one name="item" class="SellableItem" column="SELLABLE_ITEM_ID" cascade="none" />
+	</class>
+</hibernate-mapping>

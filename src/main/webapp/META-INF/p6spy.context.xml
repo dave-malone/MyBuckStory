@@ -1,0 +1,36 @@
+<Context 
+		docBase="ROOT" 
+		path="/" 
+		className="org.apache.catalina.core.StandardContext" 
+		cachingAllowed="true" 
+		charsetMapperClass="org.apache.catalina.util.CharsetMapper" 
+		cookies="true" 
+		crossContext="false" 
+		debug="0" 
+		mapperClass="org.apache.catalina.core.StandardContextMapper" 
+		privileged="false" 
+		reloadable="true" 
+		antiJARLocking="true" 
+		antiResourceLocking="true"
+		swallowOutput="false" 
+		useNaming="true" 
+		wrapperClass="org.apache.catalina.core.StandardWrapper">
+	<!-- Dev config -->
+	<Resource 
+			name="jdbc/mybuckstory" 
+			auth="Container" 
+			type="javax.sql.DataSource" 
+			driverClassName="com.p6spy.engine.spy.P6SpyDriver" 
+			factory="org.apache.commons.dbcp.BasicDataSourceFactory"			
+			url="jdbc:mysql://mybuckstory.com:3306/mbs" 
+			username="mbs"			 
+			password="VQ2mufwTC6GFfdJw" 
+			maxActive="40" 
+			maxIdle="5" 
+			maxWait="15" 
+			removeAbandoned="true" 
+			removeAbandonedTimeout="60" 
+			logAbandoned="true"
+			testWhileIdle="true"
+			validationQuery="SELECT 1"/> 			
+</Context>

@@ -1,0 +1,11 @@
+<html>
+<body>
+	<h1>Video Encoding Failed</h1>
+
+	<h2>Message</h2>
+	<p>${message}</p>
+	
+	<h2>XML</h2>
+	<p>${xml}</p>
+</body>
+</html>

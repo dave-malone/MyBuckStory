@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">	
+	<typedef class="com.mybuckstory.model.MimeType" name="mime_type">
+	    <param name="default"></param>
+	</typedef>	
+	
+	<class name="Image" table="IMAGE">
+		<cache usage="read-write"/>
+	
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>
+	
+		<version name="version"></version>
+		
+		<!-- property name="content" type="binary" column="fullsize_image" lazy="true"/>
+		<property name="thumbnail" type="binary" column="thumbnail" lazy="true"/-->
+		<property name="mimeType" type="mime_type" />
+		<property name="type" type="string" column="type" />
+		<property name="title" type="string" column="title" />
+		<property name="description" type="string" column="description" />
+		<property name="tags" type="string" column="tags" />
+		<property name="path" type="string" column="path" />
+				
+		<property name="lastUpdated" column="last_updated" type="timestamp" />					
+		<property name="dateCreated" column="date_created" type="timestamp" />		
+		
+		<many-to-one name="createdBy" class="User" column="AUTHOR_ID" cascade="none" />
+		<many-to-one name="lastUpdatedBy" class="User" column="LAST_UPDATED_ID" cascade="none"/>	
+		<many-to-one name="original" class="Image" column="ORIGINAL_IMAGE_ID" cascade="all"/>
+
+		<many-to-one name="album" class="Album" column="ALBUM_ID" cascade="save-update"/>
+		<many-to-one name="article" class="NewsArticle" column="NEWS_ARTICLE_ID" cascade="none"/>
+		<many-to-one name="affiliate" class="Affiliate" column="AFFILIATE_ID" cascade="none"/>
+		<many-to-one name="badge" class="Badge" column="BADGE_ID" cascade="none"/>
+		<many-to-one name="contest" class="Contest" column="CONTEST_ID" cascade="none"/>
+		<many-to-one name="gallery" class="Gallery" column="GALLERY_ID" cascade="none"/>
+		<many-to-one name="profile" class="Profile" column="PROFILE_ID" cascade="none"/>
+		<many-to-one name="prize" class="Prize" column="PRIZE_ID" cascade="none"/>
+		<many-to-one name="story" class="Story" column="STORY_ID" cascade="none"/>		
+
+		<!--  		
+		<set name="categories" lazy="false" table="IMAGE_CATEGORY" cascade="save-update" sort="natural">
+			<cache usage="read-write"/> 
+			<key column="IMAGE_ID"/>
+			<many-to-many class="Category" column="CATEGORY_ID"/>
+		</set>
+		-->
+		<set name="comments" cascade="all" lazy="true" sort="natural">
+			<key column="image_id" />
+			<one-to-many class="Comment" />			
+		</set>
+		<set name="likes" cascade="all" lazy="true" sort="natural">
+			<cache usage="read-write"/>
+			<key column="IMAGE_ID" />
+			<one-to-many class="ImageLike" />			
+		</set>
+		<set name="prizes" cascade="all" lazy="true">
+			<key column="WINNING_IMAGE_ID" />
+			<one-to-many class="ContestPrize" />			
+		</set>
+		<set name="resizedCopies" cascade="all" lazy="false" fetch="join">
+			<cache usage="read-write"/>
+			<key column="ORIGINAL_IMAGE_ID" />
+			<one-to-many class="Image" />			
+		</set>
+		<set name="memberFeedItems" cascade="all" lazy="true">
+			<key column="IMAGE_ID" />
+			<one-to-many class="MemberFeedItem" />			
+		</set>	
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,100 @@
+@charset "UTF-8";
+/* IE6 CSS Document */
+
+#featured-stories.navset .-nav a em,
+#featured-stories.navset .navset-top .nav a em,
+#featured-news.navset .nav a em,
+#featured-news.navset .navset-top .nav a em {width: 22%}
+
+.main-site-nav a {
+    background: #5f4b30; /* tab background */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color:#fff;
+    border: none;
+    text-decoration: none;
+    padding: 3px 35px 2px 15px;
+    font-style: normal;
+    margin-top:15px;
+}
+.main-site-nav a:hover {
+    background: #5f4b30; /* tab background */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color:#fff;
+    border: none;
+    text-decoration: none;
+    padding: 3px 35px 3px 15px;
+    font-style: normal;
+}
+.main-site-nav .selected a {
+    background: #af7c13; /* tab background */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: white;
+    border: none;
+    text-decoration: none;
+    padding: 3px 35px 2px 15px;
+    font-style: normal;
+}
+.main-site-nav .selected a:hover {
+	background: #af7c13; /* tab background */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: white;
+    border: none;
+    text-decoration: none;
+    padding: 15px 35px 0 15px;
+    font-style: normal;
+}
+.main-site-nav li {
+	border-top: 1px #8d7453 solid;
+    border-left: 1px #8d7453 solid;
+    border-right: 1px #8d7453 solid;
+    background: url(../images/main-nav-bg.jpg)repeat-x bottom;
+    margin-left: 9px;
+    padding-bottom: none;
+    height: 15px;
+    padding: 2px 0;
+}
+.main-site-nav .selected li {
+	border-top: 1px #8d7453 solid;
+    border-left: 1px #8d7453 solid;
+    border-right: 1px #8d7453 solid;
+    background: url(../images/main-nav-bg.jpg)repeat-x bottom;
+    margin-left: 9px;
+    padding-bottom: none;
+    height: 15px;
+    padding: 2px 0;
+}
+.main-site-nav li em {
+	font-style: normal;
+	background: none;
+}
+.main-site-nav .selected {
+	margin-right: -5px;	
+}
+.main-site-nav .selected em {
+	background: none;	
+}
+.navset .main-content {
+    margin-top: 2px;
+}
+#signIn {
+	margin-top: 15px;
+}
+#right {
+	margin-top: 30px;
+}
+#logo {
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	margin-left: -78px;
+}
+.main-t2 {
+	padding-right: 20px;
+}
+#memberName, #location {
+	height: 22px;
+}

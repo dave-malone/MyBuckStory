@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="Category" table="CATEGORY">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>
+		
+		<version name="version"></version>
+				
+		<property name="name" type="string" column="name" not-null="true" unique="true"/>
+		
+		<property name="lastUpdated" column="last_updated" type="timestamp" />					
+		<property name="dateCreated" column="date_created" type="timestamp" />		
+		
+		<many-to-one name="createdBy" class="User" column="AUTHOR_ID" cascade="none"/>
+		<many-to-one name="lastUpdatedBy" class="User" column="LAST_UPDATED_ID" cascade="none"/>
+		<many-to-one name="parent" class="Category" column="PARENT_CATEGORY_ID" cascade="none"/>		
+		
+		<set name="children" cascade="all" lazy="false" sort="natural">
+			<key column="PARENT_CATEGORY_ID" />
+			<one-to-many class="Category" />			
+		</set>
+		<set name="newsArticles" lazy="true" table="NEWS_ATICLE_CATEGORY" cascade="none" sort="natural"> 
+			<key column="CATEGORY_ID"/>
+			<many-to-many class="NewsArticle" column="NEWS_ARTICLE_ID"/>
+		</set>
+		<set name="stories" lazy="true" table="STORY_CATEGORY" cascade="none" sort="natural"> 
+			<key column="CATEGORY_ID"/>
+			<many-to-many class="Story" column="STORY_ID"/>
+		</set>		
+	</class>
+</hibernate-mapping>

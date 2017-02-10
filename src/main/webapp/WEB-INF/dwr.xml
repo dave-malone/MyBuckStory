@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN"
+ "http://getahead.org/dwr/dwr20.dtd">
+<dwr>
+	<allow>
+		<create creator="new" javascript="FriendRequestClient">
+			<param name="class" value="com.mybuckstory.web.dwr.FriendRequestClient" />	
+			<include method="sendRequest"/>						
+			<include method="respondToRequest"/>
+			<include method="removeFriend"/>
+		</create>
+		<create creator="new" javascript="ImageClient">
+			<param name="class" value="com.mybuckstory.web.dwr.ImageClient" />	
+			<include method="deleteImage"/>
+			<include method="likeImage"/>					
+		</create>
+		<create creator="new" javascript="MessageClient">
+			<param name="class" value="com.mybuckstory.web.dwr.MessageClient" />	
+			<include method="deleteMessage"/>
+			<include method="deleteSentMessage"/>				
+		</create>
+		<create creator="new" javascript="StoryRatingClient">
+			<param name="class" value="com.mybuckstory.web.dwr.StoryRatingClient" />	
+			<include method="rateStory"/>
+			<include method="voteStory"/>			
+		</create>
+		<create creator="new" javascript="WallClient">
+			<param name="class" value="com.mybuckstory.web.dwr.WallClient" />	
+			<include method="like"/>
+			<include method="comment"/>
+			<include method="post"/>				
+		</create>
+		<create creator="new" javascript="FileUploadProgressClient">
+			<param name="class" value="com.mybuckstory.web.dwr.FileUploadProgressClient" />	
+			<include method="getProgress"/>				
+		</create>
+		<convert converter="bean" match="com.mybuckstory.model.*" />
+		<convert converter="bean" match="com.mybuckstory.web.spring.FileUploadProgress" />
+	</allow>
+</dwr>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.mybuckstory.model">
+	<class name="Badge" table="BADGE">
+		<cache usage="read-write"/>
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>		
+		
+		<version name="version"></version>
+				
+		<property name="name" column="name" type="string" />
+		<property name="description" column="description" type="string" />
+		<property name="numberOfStoriesInCategory" column="num_of_stories_in_category" type="java.lang.Integer" />
+		<property name="lastUpdated" column="last_updated" type="timestamp" />					
+		<property name="dateCreated" column="date_created" type="timestamp" />
+	
+		<many-to-one name="createdBy" class="User" column="AUTHOR_ID" cascade="none"/>
+		<many-to-one name="lastUpdatedBy" class="User" column="LAST_UPDATED_ID" cascade="none"/>
+		<many-to-one name="image" class="Image" column="IMAGE_ID" cascade="all" />
+		<many-to-one name="storyCategory" class="Category" column="CATEGORY_ID" cascade="none" />
+				
+		<set name="memberFeedItems" cascade="all" lazy="true">
+			<key column="BADGE_ID" />
+			<one-to-many class="MemberFeedItem" />			
+		</set>	
+	</class>
+</hibernate-mapping>

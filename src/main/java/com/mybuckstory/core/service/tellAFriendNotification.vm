@@ -1,0 +1,13 @@
+<html>
+<body>
+	<p>		
+		${message}
+		<br /><br />
+		<a href="http://mybuckstory.com">MyBuckStory.com</a>			
+	</p>	
+	<p>
+		Your Friend,<br />
+		${sendersName}
+	</p>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">	
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.mybuckstory" />
+	<context:property-placeholder location="classpath:${environment:prod}.config.properties, classpath:thumbnail.defaults.properties" />	
+	
+	<jee:jndi-lookup id="mbsDataSource" jndi-name="java:comp/env/jdbc/mybuckstory" default-ref="localMbsDataSource" />	
+ 
+	<task:executor id="threadPoolTaskExecutor" 
+		pool-size="5-25"
+        queue-capacity="100"
+        rejection-policy="CALLER_RUNS"/>
+         
+	<task:annotation-driven executor="threadPoolTaskExecutor" proxy-target-class="true" />
+		
+	<tx:annotation-driven proxy-target-class="true"/>	
+
+	<bean id="localMbsDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${default.jdbc.driver}" />
+		<property name="url" value="${default.jdbc.url}" />
+		<property name="username" value="${default.jdbc.username}" />
+		<property name="password" value="${default.jdbc.password}"/>		
+	</bean>
+
+	<bean id="mbsSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="mbsDataSource" />			
+		<property name="mappingResources">
+			<list>
+				<value>/hbm/Ad.hbm.xml</value>
+				<value>/hbm/AdClick.hbm.xml</value>							
+				<value>/hbm/Affiliate.hbm.xml</value>
+				<value>/hbm/Album.hbm.xml</value>
+				<value>/hbm/Badge.hbm.xml</value>				
+				<value>/hbm/BuyerInformation.hbm.xml</value>
+				<value>/hbm/Category.hbm.xml</value>
+				<value>/hbm/Comment.hbm.xml</value>
+				<value>/hbm/Contest.hbm.xml</value>
+				<value>/hbm/ContestPrize.hbm.xml</value>
+				<value>/hbm/Event.hbm.xml</value>
+				<value>/hbm/FooterLink.hbm.xml</value>
+				<value>/hbm/FriendRequest.hbm.xml</value>
+				<value>/hbm/Gallery.hbm.xml</value>
+				<value>/hbm/Image.hbm.xml</value>
+				<value>/hbm/ImageLike.hbm.xml</value>
+				<value>/hbm/Like.hbm.xml</value>
+				<value>/hbm/MemberFeedItem.hbm.xml</value>
+				<value>/hbm/Message.hbm.xml</value>
+				<value>/hbm/NewsArticle.hbm.xml</value>
+				<value>/hbm/Order.hbm.xml</value>
+				<value>/hbm/OrderItem.hbm.xml</value>
+				<value>/hbm/Payment.hbm.xml</value>
+				<value>/hbm/Profile.hbm.xml</value>	
+				<value>/hbm/Prize.hbm.xml</value>							
+				<value>/hbm/Role.hbm.xml</value>
+				<value>/hbm/SellableItem.hbm.xml</value>
+				<value>/hbm/ShoppingCart.hbm.xml</value>
+				<value>/hbm/Story.hbm.xml</value>
+				<value>/hbm/StoryRating.hbm.xml</value>
+				<value>/hbm/StoryVote.hbm.xml</value>
+				<value>/hbm/User.hbm.xml</value>
+				<value>/hbm/Video.hbm.xml</value>
+				<value>/hbm/WallPost.hbm.xml</value>				
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop> 
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.use_second_level_cache">true</prop>
+				<!-- net.sf.ehcache.hibernate.SingletonEhCacheProvider -->
+				<!-- org.hibernate.cache.EhCacheProvider -->
+				<prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop>
+				<prop key="hibernate.connection.useUnicode">true</prop>
+				<prop key="hibernate.connection.characterEncoding">UTF-8</prop>
+				<prop key="hibernate.connection.charSet">UTF-8</prop> 
+				<!-- prop key="hibernate.generate_statistics">true</prop -->
+				<!-- prop key="hibernate.current_session_context_class">thread</prop -->
+			</props>
+		</property>
+		<property name="eventListeners">
+			<map>
+				<entry key="merge">
+					<bean class="org.springframework.orm.hibernate3.support.IdTransferringMergeEventListener"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="auditInterceptor" class="com.mybuckstory.hibernate.AuditInterceptor" scope="prototype" />
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="mbsSessionFactory" />		
+		<property name="entityInterceptorBeanName" value="auditInterceptor" />
+	</bean> 
+	
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+		<property name="velocityProperties">
+			<value>
+				resource.loader=class
+				class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+			</value>
+		</property>
+	</bean>		
+	
+	<!-- Smtp/Mail services -->
+	<bean id="smtpAuthenticator" class="com.mybuckstory.core.smtp.SmtpAuthenticator">
+		<constructor-arg value="${mail.auth.username}" />
+		<constructor-arg value="${mail.auth.password}" />	
+	</bean>	        
+	<bean id="mailSession" class="javax.mail.Session" factory-method="getInstance">
+		<constructor-arg>
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+			</props>
+		</constructor-arg>
+		<constructor-arg ref="smtpAuthenticator" />
+	</bean>
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${mail.host}" />
+		<property name="session" ref="mailSession" />
+	</bean>	 
+	
+	
+	<bean id="cacheManager" class="net.sf.ehcache.CacheManager" />
+
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="footerLinksByCategoryPointcut" expression="execution(* *..FooterLinkService.findByCategory(..))" />
+		<aop:pointcut id="mostActiveUsersPointcut" expression="execution(* *..UserService.findMostActiveUsers(..))" />
+		<aop:pointcut id="enabledAdsPointcut" expression="execution(* *..AdService.findAllEnabled())" />
+		<aop:pointcut id="getImagePathGenerateIfNecessaryPointcut" expression="execution(* *..ImageService.getImagePathGenerateIfNecessary(..))" />
+		<aop:pointcut id="generateThumbnailPointcut" expression="execution(* *..ImageService.generateThumbnail(..))" />
+		<!-- <aop:pointcut id="getMemberFeedPointcut" expression="execution(* *..MemberFeedService.getMemberFeed(..))" />
+		<aop:pointcut id="getMemberFeedCountPointcut" expression="execution(* *..MemberFeedService.getMemberFeedCount(..))" />
+		<aop:pointcut id="getMostRecentStatusPointcut" expression="execution(* *..WallPostService.getMostRecentStatus(..))" />
+		<aop:pointcut id="getMessagesPointcut" expression="execution(* *..MessageService.getMessages(..))" />
+		<aop:pointcut id="getUnansweredRequestsPointcut" expression="execution(* *..FriendRequestService.UnAnsweredRequests(..))" /> -->
+		
+		<aop:advisor id="footerLinksByCategoryMethodCachingAdvisor" advice-ref="methodCachingAdvice" pointcut-ref="footerLinksByCategoryPointcut" />
+		<aop:advisor id="mostActiveUsersMethodCachingAdvisor" advice-ref="methodCachingAdvice" pointcut-ref="mostActiveUsersPointcut" />
+		<aop:advisor id="enabledAdsMethodCachingAdvisor" advice-ref="methodCachingAdvice" pointcut-ref="enabledAdsPointcut" />
+		<aop:advisor id="getImagePathGenerateIfNecessaryAdvisor" advice-ref="methodCachingAdvice" pointcut-ref="getImagePathGenerateIfNecessaryPointcut" />
+		<aop:advisor id="generateThumbnailAdvisor" advice-ref="methodCachingAdvice" pointcut-ref="generateThumbnailPointcut" />
+		<!-- <aop:advisor id="getMemberFeedAdvisor" advice-ref="methodCachingAdvice" pointcut-ref="getMemberFeedPointcut" />
+		<aop:advisor id="getMemberFeedCountAdvisor" advice-ref="methodCachingAdvice" pointcut-ref="getMemberFeedCountPointcut" />
+		<aop:advisor id="getMostRecentStatusAdvisor" advice-ref="methodCachingAdvice" pointcut-ref="getMostRecentStatusPointcut" />
+		<aop:advisor id="getMessagesAdvisor" advice-ref="methodCachingAdvice" pointcut-ref="getMessagesPointcut" />
+		<aop:advisor id="getUnansweredRequestsAdvisor" advice-ref="methodCachingAdvice" pointcut-ref="getUnansweredRequestsPointcut" /> -->
+	</aop:config>
+
+	<bean id="methodCachingAdvice" class="com.mybuckstory.core.interceptor.MethodCachingInterceptor">
+		<property name="cacheManager" ref="cacheManager" />
+	</bean>
+</beans>

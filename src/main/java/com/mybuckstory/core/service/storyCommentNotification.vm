@@ -1,0 +1,15 @@
+<html>
+<body>
+	<p>		
+		${senderFirstName} has commented on your Story on MyBuckStory.com.
+		<br /><br />
+		To view the comments, click on the following link:
+		<br /><br />
+		<a href="http://www.mybuckstory.com${storyUri}#comments">Your Story</a>			
+	</p>	
+	<p>
+		Thanks,<br />
+		The MyBuckStory Team
+	</p>
+</body>
+</html>
